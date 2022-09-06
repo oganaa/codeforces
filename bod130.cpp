@@ -19,7 +19,7 @@ string deleteSpace(string s)
     n = s.size();
     for (int i = 0; i < n; i++)
     {
-        if (s[i] == ' ' || s[i] == ',' || s[i] == '.')
+        if (s[i] == ' ')
         {
             s.erase(i, i + 1);
             i--;
@@ -33,13 +33,17 @@ int main()
 {
     string s;
     getline(cin, s);
+    bool isComma =false;
     string result = "";
     s = deleteSpace(s);
     reverseStr(s);
     s = deleteSpace(s);
     reverseStr(s);
+
+
     n = s.size();
     int a = n;
+
     for (int i = 0; i < n; i++)
     {
         s[i] = tolower(s[i]);
@@ -74,6 +78,8 @@ int main()
     res = "";
     i = 0;
     a = s.size();
+
+
     while (i < a)
     {
         if ((s[i] == ',' && s[i + 1] == ',') || (s[i] == ',' && s[i + 1] == '.') || (s[i] == ',' && s[i + 1] == ' '))
@@ -120,7 +126,6 @@ int main()
         }
         i++;
     }
-    a = s.size();
     for (int i = 0; i < a; i++)
     {
         if (res[i] == ' ' && res[i + 1] == ',')
@@ -128,16 +133,16 @@ int main()
             char temp = res[i];
             res[i] = res[i + 1];
             res[i + 1] = temp;
-            i++;
+
         }
         else if (res[i] == ' ' && res[i + 1] == '.')
         {
             char temp = res[i];
             res[i] = res[i + 1];
             res[i + 1] = temp;
+
         }
     }
-    a = s.size();
     string str1 = " ";
     for (int i = 0; i < a; i++)
     {
@@ -152,7 +157,6 @@ int main()
             a++;
         }
     }
-    a = s.size();
     for (int i = 0; i < a; i++)
     {
         if (res[i] == '.' && res[i + 1] == ' ')
@@ -160,9 +164,7 @@ int main()
             res[i + 2] = toupper(res[i + 2]);
         }
     }
-    reverseStr(res);
-    res = deleteSpace(res);
-    reverseStr(res);
     cout << res;
     return 0;
 }
+
